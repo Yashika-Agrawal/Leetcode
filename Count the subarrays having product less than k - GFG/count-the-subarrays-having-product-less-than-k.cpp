@@ -13,11 +13,11 @@ class Solution{
         int ans=1;
         for(int i=0; i<n;i++){
             int j=i;
-            long long mul=a[i];
-            while(j<n and mul < k){
+            long long p=a[i];
+            while(j<n and p < k){
                 j++;
                 ans++;
-                mul = mul*a[j];
+                p = p*a[j];
             }
             j=i+1;
         }
