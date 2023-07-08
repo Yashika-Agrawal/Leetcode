@@ -10,32 +10,23 @@ class Solution
     public:
     void sort012(int a[], int n)
     {
-        int cnt0=0,cnt1=0,cnt2=0;
-        for(int i=0;i<n;i++)
+        //dnf 
+        int low=0,mid=0,high=n-1;
+        while(mid<=high)
         {
-            if(a[i]==0)
+            if(a[mid]==0)
             {
-                cnt0++;
+                swap(a[mid],a[low]);
+                low++; mid++;
             }
-            else if(a[i]==1)
+            else if(a[mid]==1)
             {
-                cnt1++;
+                mid++;
             }
             else{
-                cnt2++;
+                swap(a[mid],a[high]);
+                high--;
             }
-        }
-        for(int i=0;i<cnt0;i++)
-        {
-            a[i]=0;
-        }
-         for(int i=cnt0;i<cnt1+cnt0;i++)
-        {
-            a[i]=1;
-        }
-        for(int i=cnt1+cnt0;i<cnt2+cnt1+cnt0;i++)
-        {
-            a[i]=2;
         }
     }
     
