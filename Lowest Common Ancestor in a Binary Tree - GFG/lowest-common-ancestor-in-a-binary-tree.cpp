@@ -37,40 +37,22 @@ struct Node
 class Solution
 {
     public:
-    //Function to return the lowest common ancestor in a Binary Tree.
-    bool findPath(Node* root, int val, vector<Node*>& path)
-{
-    if (root == nullptr)
-        return false;
-
-    path.push_back(root);
-    if (root->data == val)
-        return true;
-
-    if (findPath(root->left, val, path) || findPath(root->right, val, path))
-        return true;
-
-    path.pop_back();
-    return false;
-}
-
-Node* lca(Node* root, int x, int y)
-{
-    vector<Node*> path1, path2;
-    if (!findPath(root, x, path1) || !findPath(root, y, path2))
-        return NULL;
-
-    Node* lca ;
-    for (int i = 0; i < path1.size() && i < path2.size(); i++)
+   
+    Node* lca(Node* root ,int n1 ,int n2 )
     {
-        if (path1[i] != path2[i])
-            break;
-        lca = path1[i];
+       if(root==NULL) return NULL;
+       if(root->data==n1 || root->data==n2) return root;
+       
+       Node* lca1= lca(root->left,n1,n2);
+       Node* lca2=lca(root->right,n1,n2);
+       if(lca1 && lca2) return root;
+       
+       //one subtree contains both
+       if(lca1) return lca1;
+       else return lca2; // if lca2 is NULL return NULL 
+   
+       
     }
-
-    return lca;
-}
-    
 };
 
 //{ Driver Code Starts.
