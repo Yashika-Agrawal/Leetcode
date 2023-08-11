@@ -9,15 +9,21 @@ class Solution
 {
     public:
     //Function to find the first non-repeating character in a string.
-    char nonrepeatingCharacter(string S)
+    char nonrepeatingCharacter(string s)
     {
-       char c='$';
-       map<char,int> ma;
-       for(auto i=0;i<S.length();i++) ma[S[i]]++;
-       for(auto i=0;i<S.length();i++){
-           if(ma[S[i]]==1) return S[i];
+       map<int, int> mp;
+       for(int i=0;i<s.length();i++)
+       {
+           mp[s[i]]++;
        }
-       return c;
+       for(int i=0;i<s.length();i++)
+       {
+           if(mp[s[i]]==1)
+           {
+               return s[i];
+           }
+       }
+       return '$';
     }
 
 };
