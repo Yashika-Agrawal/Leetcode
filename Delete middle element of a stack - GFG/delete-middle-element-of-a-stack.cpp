@@ -10,24 +10,26 @@ using namespace std;
 class Solution
 {
     public:
-    //Function to delete middle element of a stack.
-    void solve(int count, stack<int>&s, int n)
+    void solve( stack<int>&s, int k,int count)
     {
-        if(count==n/2)
+
+        if(count==k) 
         {
             s.pop();
             return;
         }
-        int num=s.top();
+        int temp=s.top();
         s.pop();
-        solve(count+1,s,n);
-        s.push(num);
-        
+        solve(s,k,count+1);
+        s.push(temp);
     }
+    
     void deleteMid(stack<int>&s, int n)
     {
-        int count=0;
-        solve(count,s,n);
+        if(n==0) return;
+        if(n==1) return;
+        int k=(n/2)+1;
+        solve(s,k,1);
     }
 };
 
