@@ -13,30 +13,23 @@ public:
             while(j<k)
             {
                 sum=a[i]+a[j]+a[k];
+                sub=abs(target-sum);
+                if(mini>sub)
+                {
+                    mini=sub;
+                    ans=sum;
+                }
                 if(sum==target)
                 {
                     return sum;
                 }
                 else if(sum<target)
-                {
-                    sub=abs(target-sum);
-                    if(mini>sub)
-                    {
-                        mini=sub;
-                        ans=sum;
-                    }
+                { 
                     j++;
                 }
                 else{
-                    sub=abs(target-sum);
-                    if(mini>sub)
-                    {
-                        mini=sub;
-                        ans=sum;
-                    }
                      k--;
                 }
-                
             }
         }
         return ans;
